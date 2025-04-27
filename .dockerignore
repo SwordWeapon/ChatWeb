@@ -1,0 +1,12 @@
+# Diretórios
+node_modules
+data
+.git
+
+# Arquivos
+.env
+.env.*
+npm-debug.log
+.DS_Store
+*.md
+.gitignore 

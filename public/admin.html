@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administração - Chat OpenAI</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Administração</h1>
+    </div>
+
+    <div class="login-container">
+      <h2>Login de Administrador</h2>
+      <div id="error-message" style="display: none; color: var(--error-color); background: #f8d7da; padding: 0.5rem; border-radius: 5px; margin-bottom: 1rem;"></div>
+
+      <div class="form-control">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite a senha de administrador">
+      </div>
+
+      <button id="login-btn" class="btn">Entrar</button>
+      
+      <div class="form-footer">
+        <a href="/">Voltar para o Chat</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Redireciona para configurações se já estiver logado como admin
+      redirectIfAdmin();
+      
+      const passwordInput = document.getElementById('password');
+      const loginBtn = document.getElementById('login-btn');
+      
+      // Login ao pressionar Enter
+      passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          doLogin();
+        }
+      });
+      
+      // Login ao clicar no botão
+      loginBtn.addEventListener('click', doLogin);
+      
+      async function doLogin() {
+        const password = passwordInput.value;
+        if (await adminLogin(password)) {
+          window.location.href = '/settings.html';
+        }
+      }
+    });
+  </script>
+</body>
+</html> 

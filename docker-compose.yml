@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  chatweb:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=token_cloudflare
+    volumes:
+      - ~/.cloudflared:/home/nonroot/.cloudflared 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações - Chat OpenAI</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Configurações de Administrador</h1>
+      <div class="nav-links">
+        <a href="/chat.html">Voltar ao Chat</a>
+        <a href="#" onclick="adminLogout(); return false;">Sair</a>
+      </div>
+    </div>
+
+    <div class="settings-container">
+      <div id="success-message" style="display: none; color: var(--success-color); background: #d4edda; padding: 0.5rem; border-radius: 5px; margin-bottom: 1rem;"></div>
+      <div id="error-message" style="display: none; color: var(--error-color); background: #f8d7da; padding: 0.5rem; border-radius: 5px; margin-bottom: 1rem;"></div>
+
+      <div class="form-control">
+        <label for="system-prompt">Prompt global do sistema:</label>
+        <textarea id="system-prompt" rows="5" placeholder="Ex: Você é um assistente útil e objetivo."></textarea>
+        <p class="form-help">Este prompt define como o assistente deve se comportar para todas as sessões de chat.</p>
+      </div>
+
+      <button id="save-settings" class="btn">Salvar Configurações</button>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+  <script src="/js/settings.js"></script>
+</body>
+</html> 
